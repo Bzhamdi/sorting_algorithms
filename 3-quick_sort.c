@@ -68,10 +68,10 @@ void tri(int *array, size_t x, size_t y, size_t size)
 	if (x <= y)
 	{
 		pivot = devide(array, x, y, size);
-		if (pivot < size - 1)
-			tri(array, pivot + 1, y, size);
 		if (pivot > x && pivot != 0)
 			tri(array, x, pivot - 1, size);
+		if (pivot < size - 1)
+			tri(array, pivot + 1, y, size);
 	}
 }
 
