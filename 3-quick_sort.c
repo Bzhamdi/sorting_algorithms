@@ -21,7 +21,7 @@ void swap(int *array, int i, int j)
 
 
 /**
-* comp - Quick Sort algorithm
+* devide - Quick Sort algorithm
 *
 * @array: the array
 * @x: first element
@@ -29,16 +29,15 @@ void swap(int *array, int i, int j)
 * @size: size of the array
 * Return: returns index of big value
 */
-size_t comp(int *array, size_t x, size_t y, size_t size)
+size_t devide(int *array, size_t x, size_t y, size_t size)
 {
-	size_t i;
-	size_t pivot = x;
-
-	for (i = x; i <= x; i++)
+size_t  i;
+size_t pivot = x;
+	for (i = x; i < y; i++)
 	{
 		if (array[i] < array[y])
 		{
-			if (array[i] != array[pivot])
+			if (i != pivot)
 			{
 				swap(array, (int)(i), (int)(pivot));
 				print_array(array, size);
@@ -46,9 +45,10 @@ size_t comp(int *array, size_t x, size_t y, size_t size)
 			pivot++;
 		}
 	}
-	if (array[pivot] != array[y])
+
+	if (array[pivot] > array[y])
 	{
-		swap(array, (int)(pivot), (int)(y));
+		swap(array, (int)(y), (int)(pivot));
 		print_array(array, size);
 	}
 	return (pivot);
@@ -67,11 +67,11 @@ void tri(int *array, size_t x, size_t y, size_t size)
 
 	if (x <= y)
 	{
-		pivot = comp(array, x, y, size);
-		if (pivot > x && pivot != 0)
-			tri(array, x, pivot - 1, size);
+		pivot = devide(array, x, y, size);
 		if (pivot < size - 1)
 			tri(array, pivot + 1, y, size);
+		if (pivot > x && pivot != 0)
+			tri(array, x, pivot - 1, size);
 	}
 }
 
